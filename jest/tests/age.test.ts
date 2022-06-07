@@ -12,17 +12,17 @@ describe('Age', () => {
 	set(date);
   });
 
-  it('should use timestamp as birth date', () => {
+  it('should use timestamp as a birth date', () => {
     const myAge = new Age(timestamp);
     expect(myAge).toBeTruthy();
   });
 
-  it('should not accept future timestamp', () => {
+  it('should not accept a future timestamp', () => {
 	expect(() => {new Age(timestamp + 1)}).toThrow(Error);
   });
 
 
-  it('should convert to string full years', () => {
+  it('should convert to string a full years', () => {
 	const myAgeAfterCurrentDate = new Age(new Date('2018-09-28').getTime());
 	expect(myAgeAfterCurrentDate.toString()).toEqual('1');
 	const myAgeBeforeCurrentDate = new Age(new Date('2018-09-25').getTime());

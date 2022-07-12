@@ -16,8 +16,6 @@ describe('Deep merge', () => {
 	it ('should merge nested object', () => {
 		expect(deepMerge({a: {b: 1}}, {a: {b: 2}})).toEqual({a: {b: 2}}); 
 		expect(deepMerge({a: {b: [1]}}, {a: {b: 2}})).toEqual({a: {b: [1, 2]}}); 
-
-
 	});
 
 });

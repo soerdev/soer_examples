@@ -1,7 +1,14 @@
-function isObject(o: any): o is object {
+export type DeepValue = string | number | DeepObject | Array<DeepValue>;
+
+
+export interface DeepObject {
+		[key: string]: DeepValue;
+};
+
+function isObject(o: DeepValue): o is DeepObject {
 	return typeof(o) === 'object' && !Array.isArray(o);
 }
-function mergeValues(a: any, b: any): any {
+function mergeValues(a: DeepValue, b: DeepValue): DeepValue {
 
 	if (isObject(a) && isObject(b)) {
 		return deepMerge(a, b);
@@ -20,9 +27,9 @@ function mergeValues(a: any, b: any): any {
 }
 
 export default function deepMerge(
-	source: object,
-	target: object) : object {
-		const result = {};
+	source: DeepObject,
+	target: DeepObject) : DeepObject {
+		const result: DeepObject = {};
 		const okeys = new Set();
 		Object.keys(source).forEach(okeys.add, okeys);
 		Object.keys(target).forEach(okeys.add, okeys);
